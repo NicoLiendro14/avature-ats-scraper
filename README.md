@@ -55,6 +55,47 @@ Instead of scraping 781K URLs one by one, we:
 - Extra from crt.sh: +16
 - Valid sites after check: 121
 
+## Reverse Engineering
+
+I analyzed 3 Avature sites (Ally, Broad Institute, Astellas) using browser dev tools.
+
+**Key finding:** Avature has no public JSON API. Everything is HTML.
+
+**URL patterns discovered:**
+
+| What | Pattern |
+|------|---------|
+| Job list | `/careers/SearchJobs/?jobRecordsPerPage=50&jobOffset=0` |
+| Pagination | Increment `jobOffset` by `jobRecordsPerPage` |
+| Job detail | `/careers/JobDetail/{slug}/{id}` |
+| Apply link | `/careers/ApplicationMethods?jobId={id}` |
+
+**Logic:** Instead of scraping each job URL from the starter pack, I scrape the job listing pages with pagination. This gets ALL current jobs from each company, not just the ones in the old URL list.
+
+## Why curl_cffi?
+
+We use [curl_cffi](https://github.com/lexiforest/curl_cffi) instead of `requests` or `httpx`.
+
+**The problem:** Websites can detect bots by looking at the "fingerprint" of your HTTP client. Each browser (Chrome, Firefox, Safari) has a unique fingerprint based on TLS settings and HTTP/2 behavior. Python's `requests` library has a fingerprint that screams "I am a bot!"
+
+**The solution:** `curl_cffi` can impersonate real browsers. It copies Chrome's exact fingerprint, so websites think you are a real user.
+
+| Library | Browser fingerprint | Block risk |
+|---------|---------------------|------------|
+| requests | Python/bot | High |
+| httpx | Python/bot | High |
+| curl_cffi | Chrome/Safari | Low |
+
+**In code:**
+
+```python
+from curl_cffi import requests
+
+response = requests.get(url, impersonate="chrome")
+```
+
+This simple change makes our scraper much harder to detect and block.
+
 ## Results
 
 - **Total jobs found:** TBD

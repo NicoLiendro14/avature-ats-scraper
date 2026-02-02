@@ -1,0 +1,90 @@
+{
+  "total_jobs": 15424,
+  "total_companies": 43,
+  "duplicates_removed": 780,
+  "top_companies": [
+    {
+      "company": "Manpowergroupco",
+      "jobs": 2004
+    },
+    {
+      "company": "Sandboxtesco",
+      "jobs": 2000
+    },
+    {
+      "company": "Nva",
+      "jobs": 1950
+    },
+    {
+      "company": "Loa",
+      "jobs": 1562
+    },
+    {
+      "company": "Tesco",
+      "jobs": 1129
+    },
+    {
+      "company": "Uclahealth",
+      "jobs": 608
+    },
+    {
+      "company": "Rohdeschwarz",
+      "jobs": 550
+    },
+    {
+      "company": "Justicejobs",
+      "jobs": 547
+    },
+    {
+      "company": "Mantech",
+      "jobs": 546
+    },
+    {
+      "company": "Radpartners",
+      "jobs": 523
+    }
+  ],
+  "top_locations": [
+    {
+      "location": "Unknown",
+      "jobs": 14731
+    },
+    {
+      "location": "Los Angeles, CA",
+      "jobs": 356
+    },
+    {
+      "location": "Santa Monica, CA",
+      "jobs": 105
+    },
+    {
+      "location": "West Hills, CA",
+      "jobs": 31
+    },
+    {
+      "location": "Western Australia",
+      "jobs": 28
+    },
+    {
+      "location": "Westlake Village, CA",
+      "jobs": 11
+    },
+    {
+      "location": "Santa Barbara, CA",
+      "jobs": 11
+    },
+    {
+      "location": "San Luis Obispo, CA",
+      "jobs": 11
+    },
+    {
+      "location": "Thousand Oaks, CA",
+      "jobs": 7
+    },
+    {
+      "location": "Torrance, CA",
+      "jobs": 7
+    }
+  ],
+  "generated_at": "2026-02-02T19:51:52.804484"
+}
